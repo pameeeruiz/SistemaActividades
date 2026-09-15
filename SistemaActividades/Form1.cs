@@ -43,62 +43,78 @@ namespace SistemaActividades
         private void btnAgregar_Click(object sender, EventArgs e)
         {
 
-            try
+            ucActividad1.LimpiarErrores();
+
+            Actividad actividad;
+
+            if (cmbTipoActividad.Text == "Cine")
             {
-                Actividad actividad;
-
-                if (cmbTipoActividad.Text == "Cine")
+                actividad = new Cine
                 {
-                    actividad = new Cine
-                    {
-                        Nombre = ucActividad1.Nombre,
-                        Sala = 1
-                    };
-                }
-                else if (cmbTipoActividad.Text == "Boliche")
-                {
-                    actividad = new Boliche
-                    {
-                        Nombre = ucActividad1.Nombre,
-                        NumeroPistas = 10
-                    };
-                }
-                else if (cmbTipoActividad.Text == "Videojuegos")
-                {
-                    actividad = new Videojuegos
-                    {
-                        Nombre = ucActividad1.Nombre,
-                        ConsolaPrincipal = "PlayStation"
-                    };
-                }
-                else
-                {
-                    MessageBox.Show("Seleccione un tipo de actividad.");
-                    return;
-                }
-
-                negocio.Registrar(
-                    actividad,
-                    ucActividad1.CostoTexto,
-                    ucActividad1.NombreResponsable,
-                    ucActividad1.Telefono
-                );
-
-                MessageBox.Show(
-                    "Actividad registrada correctamente.");
-
-                ucActividad1.Limpiar();
+                    Nombre = ucActividad1.Nombre,
+                    Sala = 1
+                };
             }
-            catch (ArgumentException ex)
+            else if (cmbTipoActividad.Text == "Boliche")
             {
-                MessageBox.Show(
-                    ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                actividad = new Boliche
+                {
+                    Nombre = ucActividad1.Nombre,
+                    NumeroPistas = 10
+                };
+            }
+            else if (cmbTipoActividad.Text == "Videojuegos")
+            {
+                actividad = new Videojuegos
+                {
+                    Nombre = ucActividad1.Nombre,
+                    ConsolaPrincipal = "PlayStation"
+                };
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un tipo de actividad.");
+                return;
             }
 
+            string error = negocio.Registrar(
+                actividad,
+                ucActividad1.CostoTexto,
+                ucActividad1.NombreResponsable,
+                ucActividad1.Telefono
+            );
+
+            if (error == "Nombre")
+            {
+                ucActividad1.MostrarError("Nombre", "Escribe el nombre de la actividad.");
+                return;
+            }
+
+            if (error == "Costo")
+            {
+                ucActividad1.MostrarError("Costo", "Escribe un costo válido mayor a cero.");
+                return;
+            }
+
+            if (error == "Responsable")
+            {
+                ucActividad1.MostrarError("Responsable", "Escribe el nombre del responsable.");
+                return;
+            }
+
+            if (error == "Telefono")
+            {
+                ucActividad1.MostrarError("Telefono", "Escribe el teléfono.");
+                return;
+            }
+
+            MessageBox.Show("Actividad registrada correctamente.");
+
+            ucActividad1.Limpiar();
+            //LIMPIAR COMBO
+            cmbTipoActividad.SelectedIndex = -1;
         }
+        
 
 
         //boton MOSTRAR actividades

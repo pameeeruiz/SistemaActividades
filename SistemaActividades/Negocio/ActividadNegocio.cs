@@ -18,68 +18,53 @@ namespace SistemaActividades.Negocio
 
         private int siguienteId = 1;
 
-        public void Registrar(
+        public string Registrar(
             Actividad actividad,
             string costoTexto,
             string nombreResponsable,
             string telefono)
         {
-            // Validar nombre
             if (string.IsNullOrWhiteSpace(actividad.Nombre))
             {
-                throw new ArgumentException("El nombre es obligatorio.");
+                return "Nombre";
             }
 
-            // Validar costo vacío
             if (string.IsNullOrWhiteSpace(costoTexto))
             {
-                throw new ArgumentException("El costo es obligatorio.");
+                return "Costo";
             }
 
-            // Validar que costo sea número
             if (!decimal.TryParse(costoTexto, out decimal costo))
             {
-                throw new ArgumentException("El costo debe ser un número.");
+                return "Costo";
             }
 
-            // Validar costo mayor a cero
             if (costo <= 0)
             {
-                throw new ArgumentException("El costo debe ser mayor a cero.");
+                return "Costo";
             }
 
-            // Asignar costo
-            actividad.costo = costo;
-
-            // Validar responsable
             if (string.IsNullOrWhiteSpace(nombreResponsable))
             {
-                throw new ArgumentException("El responsable es obligatorio.");
+                return "Responsable";
             }
 
-            // Validar teléfono
             if (string.IsNullOrWhiteSpace(telefono))
             {
-                throw new ArgumentException("El teléfono es obligatorio.");
+                return "Telefono";
             }
 
-            // Crear responsable
+            actividad.costo = costo;
+
             actividad.Responsable =
                 new Responsable(nombreResponsable, telefono);
 
-            // Validar información de la actividad
-            if (!actividad.ValidarInformacion())
-            {
-                throw new ArgumentException(
-                    "La información de la actividad no es válida.");
-            }
-
-            // Asignar ID
             actividad.Id = siguienteId;
             siguienteId++;
 
-            // Guardar
             datos.AgregarActividad(actividad);
+
+            return "";
         }
 
         public List<Actividad> ObtenerActividades()

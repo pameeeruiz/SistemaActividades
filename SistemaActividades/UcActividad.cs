@@ -46,6 +46,28 @@ namespace SistemaActividades
             get { return txtTelefono.Text; }
         }
 
+        ///METODO PARA LIMPIAR LOS CAMPOS DEL CONTROL DE USUARIO
+        public void MostrarError(string campo, string mensaje)
+        {
+            if (campo == "Nombre")
+                errorProvider1.SetError(txtNombre, mensaje);
+
+            if (campo == "Costo")
+                errorProvider1.SetError(txtCosto, mensaje);
+
+            if (campo == "Responsable")
+                errorProvider1.SetError(txtResponsable, mensaje);
+
+            if (campo == "Telefono")
+                errorProvider1.SetError(txtTelefono, mensaje);
+        }
+
+        //metodo para limpiar los campos del formulario
+        public void LimpiarErrores()
+        {
+            errorProvider1.Clear();
+        }
+
         //metodo limpiar
         public void Limpiar()
         {
