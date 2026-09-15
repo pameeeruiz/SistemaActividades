@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace SistemaActividades.Modelo
 {
+    /// <summary>
+    /// EVELYN PAMELA GUTIERREZ RUIZ 14/09/2026
+    /// ESTA CLASE REPRESENTA A UNA ACTIVIDAD DE CINE, CONTENIENDO SU NÚMERO DE SALA.
+    /// </summary>
     public class Cine : Actividad
     {
         // Propiedad

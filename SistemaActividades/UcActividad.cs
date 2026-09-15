@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace SistemaActividades
 {
+    /// <summary>
+    /// EVELYN PAMELA GUTIERREZ RUIZ 14/09/2026
+    /// ESTA CLASE ES EL CONTROL DE USUARIO QUE PERMITE INGRESAR LOS DATOS DE UNA ACTIVIDAD, INCLUYENDO EL NOMBRE, TIPO, COSTO Y RESPONSABLE.
+    /// </summary>
     public partial class UcActividad : UserControl
     {
         // Constructor
@@ -24,9 +28,12 @@ namespace SistemaActividades
             get { return txtNombre.Text; }
         }
 
-        public double Costo
+        public string CostoTexto
         {
-            get { return double.Parse(txtCosto.Text); }
+            get
+            {
+                return txtCosto.Text;
+            }
         }
 
         public string NombreResponsable
@@ -39,51 +46,7 @@ namespace SistemaActividades
             get { return txtTelefono.Text; }
         }
 
-
-        // Método para validar
-        public bool Validar()
-        {
-            bool correcto = true;
-
-            errorProvider1.Clear();
-
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
-            {
-                errorProvider1.SetError(txtNombre, "Ingrese el nombre.");
-                correcto = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtCosto.Text))
-            {
-                errorProvider1.SetError(txtCosto, "Ingrese el costo.");
-                correcto = false;
-            }
-            else if (!decimal.TryParse(txtCosto.Text, out decimal costo))
-            {
-                errorProvider1.SetError(txtCosto, "Ingrese un número válido.");
-                correcto = false;
-            }
-            else if (costo < 0)
-            {
-                errorProvider1.SetError(txtCosto, "El costo no puede ser negativo.");
-                correcto = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtResponsable.Text))
-            {
-                errorProvider1.SetError(txtResponsable, "Ingrese el responsable.");
-                correcto = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtTelefono.Text))
-            {
-                errorProvider1.SetError(txtTelefono, "Ingrese el teléfono.");
-                correcto = false;
-            }
-
-            return correcto;
-        }
-
+        //metodo limpiar
         public void Limpiar()
         {
             txtNombre.Clear();

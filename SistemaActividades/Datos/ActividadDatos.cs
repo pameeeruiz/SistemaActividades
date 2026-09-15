@@ -7,6 +7,10 @@ using SistemaActividades.Modelo;
 
 namespace SistemaActividades.Datos
 {
+    /// <summary>
+    /// EVELYN PAMELA GUTIERREZ RUIZ 14/09/2026
+    /// ESTA CLASE ES RESPONSABLE DE GESTIONAR LOS DATOS DE LAS ACTIVIDADES, PERMITIENDO AGREGAR Y OBTENER ACTIVIDADES.
+    /// </summary>
     public class ActividadDatos
     {
         // Lista para almacenar las actividades
