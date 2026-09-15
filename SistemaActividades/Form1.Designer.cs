@@ -32,8 +32,8 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.dgvActividades = new System.Windows.Forms.DataGridView();
-            this.ucActividad1 = new SistemaActividades.UcActividad();
             this.label1 = new System.Windows.Forms.Label();
+            this.ucActividad1 = new SistemaActividades.UcActividad();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActividades)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,15 +78,8 @@
             this.dgvActividades.Name = "dgvActividades";
             this.dgvActividades.RowHeadersWidth = 51;
             this.dgvActividades.RowTemplate.Height = 24;
-            this.dgvActividades.Size = new System.Drawing.Size(367, 232);
+            this.dgvActividades.Size = new System.Drawing.Size(455, 232);
             this.dgvActividades.TabIndex = 4;
-            // 
-            // ucActividad1
-            // 
-            this.ucActividad1.Location = new System.Drawing.Point(12, 126);
-            this.ucActividad1.Name = "ucActividad1";
-            this.ucActividad1.Size = new System.Drawing.Size(189, 291);
-            this.ucActividad1.TabIndex = 1;
             // 
             // label1
             // 
@@ -97,11 +90,18 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Sistema de Actividades";
             // 
+            // ucActividad1
+            // 
+            this.ucActividad1.Location = new System.Drawing.Point(12, 126);
+            this.ucActividad1.Name = "ucActividad1";
+            this.ucActividad1.Size = new System.Drawing.Size(189, 291);
+            this.ucActividad1.TabIndex = 1;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(645, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvActividades);
             this.Controls.Add(this.btnMostrar);
